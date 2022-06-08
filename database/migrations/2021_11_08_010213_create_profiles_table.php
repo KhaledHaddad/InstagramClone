@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilesTable extends Migration
+class CreateprofilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,9 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('url')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

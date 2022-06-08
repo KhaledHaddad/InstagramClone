@@ -10,15 +10,15 @@
                 <div>
                     <div class="d-flex align-items-center">
                         <div class="pr-3">
-                            {{-- <img src="" class="rounded-circle w-100"
-                                style="max-width: 40px;"> --}}
+                            <img src="{{ $post->user->profile->ProfileImage() }}" class="rounded-circle w-100"
+                                style="max-width: 40px;">
                         </div>
                         <div>
                             <div class="font-weight-bold">
-                                <a href="{{ route('profiles.index', $post->user_id) }}">
+                                <a href="{{ route('profile.show', $post->user_id) }}">
                                     <span class="text-dark">{{ $post->user->username }}</span>
                                 </a>
-                                <a href="#" class="pl-3">Follow</a>
+                                <small><a href="#" class="pl-3 text-small font-weight-bold">Follow</a></small>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
 
                     <p>
                         <span class="font-weight-bold">
-                            <a href="{{ route('profiles.index', $post->user_id) }}">
+                            <a href="{{ route('profile.show', $post->user_id) }}">
                                 <span class="text-dark">{{ $post->user->username }}</span>
                             </a>
                         </span> {{ $post->caption }}

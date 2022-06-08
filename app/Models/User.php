@@ -43,6 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        User::created(function ($user) {
+            $user->profile()->create([
+                'title' => $user->username
+            ]);
+        });
+    }
+
     public function profile ()
     {
         return $this->hasOne(Profile::class);
@@ -50,6 +60,6 @@ class User extends Authenticatable
 
     public function posts ()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)->latest();
     }
 }

@@ -24,11 +24,10 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'caption' => 'required',
-            'image' => 'required'
+            'image' => 'required|image'
         ]);
 
         $imagePath = $request->image->store('uploads', 'public');
-
         $image = Image::make(public_path("storage/$imagePath"))->fit(1200, 1200);
         $image->save();
         
@@ -37,7 +36,7 @@ class PostController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('profiles.index', Auth::user()->id);
+        return redirect()->route('profile.show', Auth::user()->id);
     }
 
     public function show (Post $post)
